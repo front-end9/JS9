@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        main {
+            width: 100vh;
+            height: 100vh;
+            margin: 50px;
+            position: relative;
+            background-color: silver;
+        }
+
+        #rectangle {
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            transition: linear 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="rectangleInfo(rectangle)">printInfo</button>
+    <button onclick="rectangleWidth(rectangle)">rectangleWidth</button>
+    <button onclick="rectangleHeight(rectangle)">rectangleHeight</button>
+    <button onclick="rectangleArea(rectangle)">rectangleArea</button>
+    <button onclick="rectanglePerimeter(rectangle)">rectanglePerimeter</button>
+    <button onclick="rectangleChangeWidth(rectangle)">rectangleChangeWidth</button>
+    <button onclick="rectangleChangeHeight(rectangle)">rectangleChangeHeight</button>
+    <button onclick="rectangleChangeDimensions(rectangle)">rectangleChangeDimensions</button>
+    <button onclick="rectangleMoveX(rectangle)">rectangleMoveX</button>
+    <button onclick="rectangleMoveY(rectangle)">rectangleMoveY</button>
+    <button onclick="rectangleMove(rectangle)">rectangleMove</button>
+    <button onclick="isRectanglePoint(rectangle)">isRectanglePoint</button>
+    <main>
+        <div id="rectangle"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
