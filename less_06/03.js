@@ -206,19 +206,19 @@ fruits.sort(function (a, b) {
 
 // document.write(buf2);
 
-// function printFruits(_fruits) {
-//     let _buf = '<ul>';
-//     for (const key in _fruits) {
-//         if (typeof _fruits[key] == 'object') {
-//             _buf += `<li>${key.toUpperCase()}: ${printFruits(_fruits[key])}</li>`;
-//         } else {
-//             _buf += `<li>${key}: ${_fruits[key]}</li>`;
-//         }
-//     }
-//     return _buf + '</ul>';
-// }
+function printFruits(_fruits) {
+    let _buf = '<ul>';
+    for (const key in _fruits) {
+        if (typeof _fruits[key] == 'object') {
+            _buf += `<li>${key.toUpperCase()}: ${printFruits(_fruits[key])}</li>`;
+        } else {
+            _buf += `<li>${key}: ${_fruits[key]}</li>`;
+        }
+    }
+    return _buf + '</ul>';
+}
 
-// document.write(`${printFruits(fruits)}`);
+document.write(`${printFruits(fruits)}`);
 
 // Поиск фрукта в массиве. Функция принимает название фрукта и возвращает индекс найденного элемента или -1, если не найден. Поиск должен быть не регистрозависимым.
 
