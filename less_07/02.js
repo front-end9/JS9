@@ -1,4 +1,4 @@
-// Реализовать класс, описывающий новость (заголовок, текст, массив тегов, дата публикации). В классе необходимо реализовать один метод print, который выводит всю информацию через document.write() Если с даты публикации прошло менее дня, то выводится «сегодня», если с даты публикации прошло менее недели, то выводится «N дней назад», в остальных случаях, полная дата в формате «дд.мм.гггг».
+// Реализовать класс, описывающий новость (заголовок, текст, массив тегов, дата публикации). В классе необходимо реализовать один метод print, который выводит всю информацию через document.Print() Если с даты публикации прошло менее дня, то выводится «сегодня», если с даты публикации прошло менее недели, то выводится «N дней назад», в остальных случаях, полная дата в формате «дд.мм.гггг».
 
 class Tag {
     constructor(_options) {
@@ -8,7 +8,7 @@ class Tag {
         this.tagName = _options.tagName;
         this.className = _options.className ? _options.className : '';
     }
-    write(_text) {
+    Print(_text) {
         return `
         <${this.tagName} style="
             font-size: ${this.fontSize}px;
@@ -27,7 +27,7 @@ class Link extends Tag {
         super(_options);
         this.href = _options.href;
     }
-    write(_text) {
+    Print(_text) {
         return `
         <${this.tagName}
             target="_blank"
@@ -49,6 +49,7 @@ class Article {
         this._text = _options.text;
         this._tags = _options.tags;
         this._date = _options.date ? _options.date : new Date();
+        this._date.month--;
     }
     get title() {
         return new Tag({
@@ -57,7 +58,7 @@ class Article {
             fontFamily: "Arial",
             tagName: "h1",
             className: "VikaDostatochnoPlease"
-        }).write(this._title);
+        }).Print(this._title);
     }
     get text() {
         return new Tag({
@@ -65,7 +66,7 @@ class Article {
             fontColor: "darkgrey",
             fontFamily: "Times new roman",
             tagName: "p"
-        }).write(this._text);
+        }).Print(this._text);
     }
     get tags() {
         let buf = "<ul>";
@@ -78,13 +79,33 @@ class Article {
                 fontFamily: "Times new roman",
                 tagName: "a",
                 href: `https://${element.link}`
-            }).write(element.text);
+            }).Print(element.text);
             buf += "</li>";
         }
         return buf + "</ul>";
     }
     get date() {
-        return `<time>${this._date}</time>`;
+        let d = this._date;
+        const timeInMs = Date.now();
+        let dateNow = new Date(timeInMs);
+        let dateArticle = new Date(d.year, d.month, d.day);
+        let daysAfterPost = new Date(dateNow - dateArticle) / 1000 / 60 / 60 / 24;
+        let dateText;
+        if (daysAfterPost < 1) {
+            dateText = "Today";
+        }
+        else if (daysAfterPost < 7 && daysAfterPost > 1) {
+            dateText = `${Math.trunc(daysAfterPost)} days ago`;
+        }
+        else {
+            dateText = `${d.day}.${d.month + 1}.${d.year}`;
+        }
+        return new Tag({
+            tagName: 'time',
+            fontSize: 12,
+            fontColor: "grey",
+            fontFamily: "Times new roman"
+        }).Print(dateText);
     }
     Print() {
         document.write(`
@@ -113,7 +134,11 @@ let a = new Article({
         link: "instagram.com"
     }
     ],
-    date: "01.02.1903"
+    date: {
+        day: 17,
+        month: 11,
+        year: 2019
+    }
 });
 
 a.Print();
