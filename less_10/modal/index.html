@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .modal:before {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            content: '';
+            display: block;
+        }
+
+        .modal__panel {
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50vw;
+            height: 50vw;
+            transform: translate(-50%, -50%);
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="js-open-modal">open modal</button>
+    <div class="modal js-modal">
+        <div class="modal__panel">
+            <button class="js-close-modal">close modal</button>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam dignissimos iste fugiat, itaque
+                exercitationem in id soluta corrupti maxime praesentium accusamus quasi adipisci deleniti quas totam
+                tempore, nihil minus illo!</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

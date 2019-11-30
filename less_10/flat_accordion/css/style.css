@@ -1,0 +1,13 @@
+.tab__header {
+    background-color: red;
+}
+
+.tab__body {
+    display: none;
+    background-color: blue;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
