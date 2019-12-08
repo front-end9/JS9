@@ -1,0 +1,36 @@
+ul {
+    background-color: whitesmoke;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 0;
+    list-style: none;
+}
+
+li:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+div:not(#root) {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+button {
+    margin: 15px 0;
+}
+
+article {
+    border: 1px solid white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 120%;
+    margin-top: 0;
+}
+
+p {
+    margin-bottom: 0;
+}
