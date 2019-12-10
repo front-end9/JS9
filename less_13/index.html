@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Set the size of the div element that contains the map */
+        body {
+            margin: 0;
+        }
+
+        #root {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999999;
+            background-color: white;
+            padding: 20px;
+        }
+
+        #map {
+            height: 100vh;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h3>My Google Maps Demo</h3> -->
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <div id="root">
+        <h2>Выберите локацию</h2>
+        <select name="location" id="location">
+            <option value="kiev">kiev</option>
+            <option value="niko">niko</option>
+            <option value="poltava">poltava</option>
+        </select>
+    </div>
+    <script>
+        let map;
+        var niko = {
+            lat: 46.9609650,
+            lng: 32.0212107
+        };
+        var poltava = {
+            lat: 49.588990,
+            lng: 34.557690
+        };
+        var kiev = {
+            lat: 50.4627518,
+            lng: 30.4784863
+        }
+        let select = document.getElementById("location");
+
+        select.addEventListener("change", function (event) {
+            console.log(this.value);
+            eval(`map.setCenter(${this.value})`);
+        })
+        // Initialize and add the map
+        function initMap() {
+            // The location of niko
+            // The map, centered at niko
+            map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 12,
+                    center: kiev
+                });
+            // The marker, positioned at niko
+            var markerNiko = new google.maps.Marker({
+                position: niko,
+                map: map
+            });
+            var markerPoltava = new google.maps.Marker({
+                position: poltava,
+                map: map
+            });
+            var markerKiev = new google.maps.Marker({
+                position: kiev,
+                map: map
+            });
+        }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+</body>
+
+</html>
