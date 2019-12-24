@@ -1,0 +1,29 @@
+.clock {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    position: relative;
+}
+
+.arrowseconds {
+    height: 1px;
+    width: 90px;
+    background-color: #000;
+    transform-origin: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: linear 1s;
+}
+
+.arrowmin {
+    height: 1px;
+    width: 70px;
+    background-color: #000;
+    transform-origin: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: linear 1s;
+}
